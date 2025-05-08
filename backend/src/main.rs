@@ -1,8 +1,9 @@
 use actix_web::{App, HttpServer, web, middleware};
 use actix_cors::Cors;
 mod handlers;
+mod crypto;
 use handlers::{post_message, get_messages, create_channel, list_channels, join_channel, AppState};
-
+use crypto::Encryption;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -10,7 +11,11 @@ async fn main() -> std::io::Result<()> {
     env_logger::init();
     let redis_url = std::env::var("REDIS_URL").unwrap_or_else(|_| "redis://127.0.0.1/".into());
     let redis_client = redis::Client::open(redis_url).expect("Invalid REDIS_URL");
-    let state = AppState { redis_client };
+    let encryption = Encryption::new().expect("Failed to initialize encryption");
+    let state = AppState { 
+        redis_client,
+        encryption,
+    };
 
     HttpServer::new(move || {
         let cors = Cors::default()
