@@ -1,0 +1,115 @@
+/* Global (ou CSS Module) */
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin-left: 250px;       /* si tu veux garder ta sidebar */
+  padding: 1rem;
+  justify-content: flex-end;/* pousse le input tout en bas */
+}
+
+.messagesContainer {
+  flex: 1;                  /* prend tout l'espace au-dessus */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 24px;
+  gap: 12px;
+}
+
+/* zone de saisie sticky tout en bas, centrée */
+.chat-input {
+  position: sticky;
+  bottom: 16px;             /* un peu d'air sous la zone */
+  width: 100%;
+  max-width: 800px;         /* tu ajustes selon ton layout */
+  margin: 0 auto;           /* centré horizontalement */
+  padding: 0 24px;          /* en cas de bordures ou padding latéral */
+  box-sizing: border-box;
+}
+
+.chat-input input {
+  width: 100%;
+  height: 40px;
+  padding: 12px 48px 12px 16px;
+  border: none;
+  border-radius: 999px;
+  background: #2C2C38;
+  color: #E7E7E7;
+  font-size: 14px;
+  outline: none;
+}
+
+.chat-input input::placeholder {
+  color: #777;
+}
+
+/* bouton envoyer */
+.chat-input .send-btn {
+  position: absolute;
+  bottom: 24px;
+  right: calc(50% - 400px + 16px); 
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.chat-input .send-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: #8C8CA1;
+  transition: fill 0.2s ease;
+}
+
+.chat-input .send-btn:hover svg {
+  fill: #FFF;
+}
+
+.inputBar {
+  display: flex;
+  align-items: center;
+  background: #23272f;
+  border-radius: 16px;
+  padding: 0.5rem 1rem;
+  gap: 0.5rem;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.inputModern {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 0.75rem 0.5rem;
+  outline: none;
+}
+
+.inputModern::placeholder {
+  color: #b0b3b8;
+  opacity: 1;
+}
+
+.iconLeft, .iconRight {
+  color: #b0b3b8;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.iconLeft:hover, .iconRight:hover {
+  color: #fff;
+}
+
+.inputForm {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 1.5rem 0 0 0;
+  margin: 0;
+}
+

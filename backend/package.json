@@ -1,0 +1,10 @@
+{
+  "name": "rust-chat-backend",
+  "scripts": {
+    "dev": "cargo run",
+    "build": "cargo build --release"
+  },
+  "dependencies": {
+    "react-icons": "^5.5.0"
+  }
+}
